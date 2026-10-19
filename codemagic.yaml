@@ -8,10 +8,11 @@ workflows:
       app_store_connect: Revolute Taycoon ASC
     environment:
       xcode: latest
-      ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.taycoon.revolute
+      groups:
+        # Environment variable group with CERTIFICATE_PRIVATE_KEY (RSA key in PEM, marked secret).
+        - code_signing
       vars:
+        BUNDLE_ID: com.taycoon.revolute
         APP_STORE_APPLE_ID: 6824470855
         XCODE_PROJECT: RevoluteTycoon.xcodeproj
         XCODE_SCHEME: RevoluteTycoon
@@ -43,7 +44,18 @@ workflows:
           brew list xcodegen >/dev/null 2>&1 || brew install xcodegen
           xcodegen generate
       - name: Set up code signing
-        script: xcode-project use-profiles
+        script: |
+          if [ -z "${CERTIFICATE_PRIVATE_KEY:-}" ]; then
+            echo "CERTIFICATE_PRIVATE_KEY is missing: add it to the 'code_signing' variable group." >&2
+            exit 1
+          fi
+          keychain initialize
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --certificate-key=@env:CERTIFICATE_PRIVATE_KEY \
+            --create
+          keychain add-certificates
+          xcode-project use-profiles
       - name: Bump build number
         script: |
           LATEST=$(app-store-connect get-latest-app-store-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo 0)
