@@ -1,0 +1,462 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		081EF6C89F2B0CF8D5745F8E /* FloorTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72E6817C3218F40E5B0273C /* FloorTab.swift */; };
+		29F0673EB96236E6C1BB168A /* RustEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFB69740F3533F8D40C68D0 /* RustEngine.swift */; };
+		383563C043DFB8C1BA00ABB4 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2544E974BADD0FCFC34989A /* GameView.swift */; };
+		3D13A62A2676F6861E483F47 /* StaffTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB55936976FC135B251ED85 /* StaffTab.swift */; };
+		482FF499BE7CE648E9FB71E2 /* FinanceTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0354E62B947718E4C2B2C40F /* FinanceTab.swift */; };
+		6499585F8A50F3377A90DCF3 /* EmpireTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9323FE04831F459A1A8DC5A /* EmpireTab.swift */; };
+		6C7B0611F709F3E6BF9C906B /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = CF3D507B57D0B1435F523A4B /* PrivacyInfo.xcprivacy */; };
+		78F86BDE83040D5074FAB3CB /* DevelopTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED2B266269ADBF68DDC3592 /* DevelopTab.swift */; };
+		79327AD257FD4D56E44BC42E /* GameStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81521EBAED44973A1424DBC3 /* GameStore.swift */; };
+		8A2C35C9565BDB07F69B83BB /* RevoluteTycoonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA9BE4019E41CA3886F22DE /* RevoluteTycoonApp.swift */; };
+		992EC1F9C5572B2703EB7673 /* OfficeSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0CA2440EDADB1EDF2253DD /* OfficeSheet.swift */; };
+		A2B4C5B4F4B30556386A2B02 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19960D86AA50825DCF156BD7 /* Theme.swift */; };
+		ABCF8DE10CE90B06185882AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69D89B79C6F5776306DA16E7 /* Assets.xcassets */; };
+		B7039251EE17226AC3531284 /* FloorCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B8E6EC9F9BD011A0008EC9 /* FloorCanvas.swift */; };
+		B89A9F119D9559EC37007A1B /* ItemArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2E2035800703AAC2A5D0B7 /* ItemArt.swift */; };
+		CF1ACB6E9579536DAA0E881B /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE22FC3D5560C68A573852C5 /* Models.swift */; };
+		E5A912407016D82A229B3D02 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3156479880CBB98C9AB30D9 /* MenuView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0354E62B947718E4C2B2C40F /* FinanceTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceTab.swift; sourceTree = "<group>"; };
+		19960D86AA50825DCF156BD7 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		1A0CA2440EDADB1EDF2253DD /* OfficeSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeSheet.swift; sourceTree = "<group>"; };
+		3B2E2035800703AAC2A5D0B7 /* ItemArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemArt.swift; sourceTree = "<group>"; };
+		47B8E6EC9F9BD011A0008EC9 /* FloorCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloorCanvas.swift; sourceTree = "<group>"; };
+		69D89B79C6F5776306DA16E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		702BE8D63E8135956F158A9A /* RevoluteTycoon.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = RevoluteTycoon.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		81521EBAED44973A1424DBC3 /* GameStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStore.swift; sourceTree = "<group>"; };
+		B3156479880CBB98C9AB30D9 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		B6E49ADAEFB46FAB55F5E3F8 /* taycoon_engine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = taycoon_engine.h; sourceTree = "<group>"; };
+		B72E6817C3218F40E5B0273C /* FloorTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloorTab.swift; sourceTree = "<group>"; };
+		B9323FE04831F459A1A8DC5A /* EmpireTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpireTab.swift; sourceTree = "<group>"; };
+		CF3D507B57D0B1435F523A4B /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		CFA9BE4019E41CA3886F22DE /* RevoluteTycoonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevoluteTycoonApp.swift; sourceTree = "<group>"; };
+		D0EB324B379AB84A43D27F39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		DE22FC3D5560C68A573852C5 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		E2544E974BADD0FCFC34989A /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		F47C11F001CE668202D71631 /* RevoluteTycoon-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RevoluteTycoon-Bridging-Header.h"; sourceTree = "<group>"; };
+		FCB55936976FC135B251ED85 /* StaffTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffTab.swift; sourceTree = "<group>"; };
+		FCFB69740F3533F8D40C68D0 /* RustEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RustEngine.swift; sourceTree = "<group>"; };
+		FED2B266269ADBF68DDC3592 /* DevelopTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopTab.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		2BA6CE8C3CEC707321AD180C /* RevoluteTycoon */ = {
+			isa = PBXGroup;
+			children = (
+				69D89B79C6F5776306DA16E7 /* Assets.xcassets */,
+				D0EB324B379AB84A43D27F39 /* Info.plist */,
+				CF3D507B57D0B1435F523A4B /* PrivacyInfo.xcprivacy */,
+				7B2F1AF9444F3D0BB2F38898 /* App */,
+				41C3B7FB5FAFDE02E3C70F9C /* Art */,
+				8878BC21CCADF379BCAEE3DA /* Bridge */,
+				9861B72E9CCD77833085AE63 /* Core */,
+				D53AC99174BDBCA2BCF968AD /* UI */,
+			);
+			path = RevoluteTycoon;
+			sourceTree = "<group>";
+		};
+		3CD3381BFCDC72B39DAC6AD3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				702BE8D63E8135956F158A9A /* RevoluteTycoon.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		41C3B7FB5FAFDE02E3C70F9C /* Art */ = {
+			isa = PBXGroup;
+			children = (
+				47B8E6EC9F9BD011A0008EC9 /* FloorCanvas.swift */,
+				3B2E2035800703AAC2A5D0B7 /* ItemArt.swift */,
+			);
+			path = Art;
+			sourceTree = "<group>";
+		};
+		7B2F1AF9444F3D0BB2F38898 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				CFA9BE4019E41CA3886F22DE /* RevoluteTycoonApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		8878BC21CCADF379BCAEE3DA /* Bridge */ = {
+			isa = PBXGroup;
+			children = (
+				F47C11F001CE668202D71631 /* RevoluteTycoon-Bridging-Header.h */,
+				B6E49ADAEFB46FAB55F5E3F8 /* taycoon_engine.h */,
+			);
+			path = Bridge;
+			sourceTree = "<group>";
+		};
+		8D1879960E82D00AF66F3A86 = {
+			isa = PBXGroup;
+			children = (
+				2BA6CE8C3CEC707321AD180C /* RevoluteTycoon */,
+				3CD3381BFCDC72B39DAC6AD3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9861B72E9CCD77833085AE63 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				81521EBAED44973A1424DBC3 /* GameStore.swift */,
+				DE22FC3D5560C68A573852C5 /* Models.swift */,
+				FCFB69740F3533F8D40C68D0 /* RustEngine.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		D53AC99174BDBCA2BCF968AD /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				FED2B266269ADBF68DDC3592 /* DevelopTab.swift */,
+				B9323FE04831F459A1A8DC5A /* EmpireTab.swift */,
+				0354E62B947718E4C2B2C40F /* FinanceTab.swift */,
+				B72E6817C3218F40E5B0273C /* FloorTab.swift */,
+				E2544E974BADD0FCFC34989A /* GameView.swift */,
+				B3156479880CBB98C9AB30D9 /* MenuView.swift */,
+				1A0CA2440EDADB1EDF2253DD /* OfficeSheet.swift */,
+				FCB55936976FC135B251ED85 /* StaffTab.swift */,
+				19960D86AA50825DCF156BD7 /* Theme.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A9194DAE8065688272E05597 /* RevoluteTycoon */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6C79C9516F7E737757053146 /* Build configuration list for PBXNativeTarget "RevoluteTycoon" */;
+			buildPhases = (
+				5CB3B2190E9E22B1294C8E9E /* Build Rust engine */,
+				1B3D849DA322B92529E91014 /* Sources */,
+				31D423A3804745EA5C1995C5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RevoluteTycoon;
+			packageProductDependencies = (
+			);
+			productName = RevoluteTycoon;
+			productReference = 702BE8D63E8135956F158A9A /* RevoluteTycoon.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1CE8CD39D32E06A665425A01 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					A9194DAE8065688272E05597 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 7BE3F010BA8A3A721F9E75ED /* Build configuration list for PBXProject "RevoluteTycoon" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 8D1879960E82D00AF66F3A86;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 3CD3381BFCDC72B39DAC6AD3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A9194DAE8065688272E05597 /* RevoluteTycoon */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		31D423A3804745EA5C1995C5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABCF8DE10CE90B06185882AD /* Assets.xcassets in Resources */,
+				6C7B0611F709F3E6BF9C906B /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5CB3B2190E9E22B1294C8E9E /* Build Rust engine */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Build Rust engine";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(PROJECT_DIR)/rust/target/xcode/$(PLATFORM_NAME)/libtaycoon_engine.a",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PROJECT_DIR}/scripts/build_rust.sh\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1B3D849DA322B92529E91014 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78F86BDE83040D5074FAB3CB /* DevelopTab.swift in Sources */,
+				6499585F8A50F3377A90DCF3 /* EmpireTab.swift in Sources */,
+				482FF499BE7CE648E9FB71E2 /* FinanceTab.swift in Sources */,
+				B7039251EE17226AC3531284 /* FloorCanvas.swift in Sources */,
+				081EF6C89F2B0CF8D5745F8E /* FloorTab.swift in Sources */,
+				79327AD257FD4D56E44BC42E /* GameStore.swift in Sources */,
+				383563C043DFB8C1BA00ABB4 /* GameView.swift in Sources */,
+				B89A9F119D9559EC37007A1B /* ItemArt.swift in Sources */,
+				E5A912407016D82A229B3D02 /* MenuView.swift in Sources */,
+				CF1ACB6E9579536DAA0E881B /* Models.swift in Sources */,
+				992EC1F9C5572B2703EB7673 /* OfficeSheet.swift in Sources */,
+				8A2C35C9565BDB07F69B83BB /* RevoluteTycoonApp.swift in Sources */,
+				29F0673EB96236E6C1BB168A /* RustEngine.swift in Sources */,
+				3D13A62A2676F6861E483F47 /* StaffTab.swift in Sources */,
+				A2B4C5B4F4B30556386A2B02 /* Theme.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		25E44FCA0E4504C8010C4177 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEPLOYMENT_POSTPROCESSING = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = RevoluteTycoon/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/rust/target/xcode/$(PLATFORM_NAME)";
+				OTHER_LDFLAGS = "-ltaycoon_engine";
+				PRODUCT_BUNDLE_IDENTIFIER = com.taycoon.revolute;
+				PRODUCT_NAME = RevoluteTycoon;
+				SDKROOT = iphoneos;
+				STRIP_INSTALLED_PRODUCT = YES;
+				STRIP_STYLE = all;
+				SWIFT_OBJC_BRIDGING_HEADER = "RevoluteTycoon/Bridge/RevoluteTycoon-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7431F904AE0546D75C43B817 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		E3AB2C005C296443A173C14A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = RevoluteTycoon/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/rust/target/xcode/$(PLATFORM_NAME)";
+				OTHER_LDFLAGS = "-ltaycoon_engine";
+				PRODUCT_BUNDLE_IDENTIFIER = com.taycoon.revolute;
+				PRODUCT_NAME = RevoluteTycoon;
+				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "RevoluteTycoon/Bridge/RevoluteTycoon-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E87364B77E13577648B2F77C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6C79C9516F7E737757053146 /* Build configuration list for PBXNativeTarget "RevoluteTycoon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E3AB2C005C296443A173C14A /* Debug */,
+				25E44FCA0E4504C8010C4177 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		7BE3F010BA8A3A721F9E75ED /* Build configuration list for PBXProject "RevoluteTycoon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E87364B77E13577648B2F77C /* Debug */,
+				7431F904AE0546D75C43B817 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1CE8CD39D32E06A665425A01 /* Project object */;
+}

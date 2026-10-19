@@ -1,0 +1,68 @@
+workflows:
+  ios-app-store:
+    name: Revolute Taycoon · App Store
+    instance_type: mac_mini_m2
+    max_build_duration: 60
+    integrations:
+      # Teams → Integrations → App Store Connect: add an API key with this exact name.
+      app_store_connect: Revolute Taycoon ASC
+    environment:
+      xcode: latest
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.taycoon.revolute
+      vars:
+        APP_STORE_APPLE_ID: 6824470855
+        XCODE_PROJECT: RevoluteTycoon.xcodeproj
+        XCODE_SCHEME: RevoluteTycoon
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+      cancel_previous_builds: true
+    scripts:
+      - name: Install Rust toolchain
+        script: |
+          if ! command -v rustup >/dev/null 2>&1; then
+            curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --profile minimal --default-toolchain none
+          fi
+          echo "PATH=$HOME/.cargo/bin:$PATH" >> "$CM_ENV"
+          export PATH="$HOME/.cargo/bin:$PATH"
+          # rust/rust-toolchain.toml pins the compiler version and iOS targets.
+          cd rust
+          rustup toolchain install
+          rustc --version
+      - name: Test Rust engine
+        script: |
+          cd rust
+          cargo test --release --locked -p taycoon_engine
+      - name: Generate Xcode project
+        script: |
+          brew list xcodegen >/dev/null 2>&1 || brew install xcodegen
+          xcodegen generate
+      - name: Set up code signing
+        script: xcode-project use-profiles
+      - name: Bump build number
+        script: |
+          LATEST=$(app-store-connect get-latest-app-store-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo 0)
+          TESTFLIGHT=$(app-store-connect get-latest-testflight-build-number "$APP_STORE_APPLE_ID" 2>/dev/null || echo 0)
+          NEXT=$(( (LATEST > TESTFLIGHT ? LATEST : TESTFLIGHT) + 1 ))
+          echo "Build number: $NEXT"
+          agvtool new-version -all "$NEXT"
+      - name: Build IPA
+        script: |
+          xcode-project build-ipa \
+            --project "$XCODE_PROJECT" \
+            --scheme "$XCODE_SCHEME" \
+            --config Release
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true
+        submit_to_app_store: false

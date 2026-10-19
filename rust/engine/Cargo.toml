@@ -1,0 +1,21 @@
+[package]
+name = "taycoon_engine"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+# `lib` keeps `cargo test` working, `staticlib` is what Xcode links.
+crate-type = ["lib", "staticlib"]
+
+[lints.clippy]
+unwrap_used = "deny"
+expect_used = "deny"
+
+[features]
+# Enables debugger detection. Turned on for Release/App Store builds only.
+hardened = []
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+safetynet = { git = "https://github.com/hdbg/safetynet.git", version = "0.1.2" }

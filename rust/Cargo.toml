@@ -1,0 +1,14 @@
+# Rust workspace for Revolute Taycoon.
+# The economic simulation, finance/tax math and anti-tamper logic live here and
+# are compiled into a static library linked by the Swift app over a C FFI.
+
+[workspace]
+resolver = "2"
+members = ["engine"]
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
