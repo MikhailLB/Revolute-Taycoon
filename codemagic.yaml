@@ -5,7 +5,7 @@ workflows:
     max_build_duration: 60
     integrations:
       # Teams → Integrations → App Store Connect: add an API key with this exact name.
-      app_store_connect: Revolute Taycoon ASC
+      app_store_connect: codemagic
     environment:
       xcode: latest
       groups:
