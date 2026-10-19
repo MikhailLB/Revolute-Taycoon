@@ -79,4 +79,5 @@ workflows:
         # Uploads still reach TestFlight for internal testers. Set to true once Test Information
         # (feedback email, review contact) is filled in App Store Connect to auto-submit for external testing.
         submit_to_testflight: false
-        submit_to_app_store: true
+        # Builds only land in App Store Connect; review submission is done manually.
+        submit_to_app_store: false
