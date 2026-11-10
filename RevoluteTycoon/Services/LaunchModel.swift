@@ -156,6 +156,12 @@ final class LaunchModel {
     /// we drop straight into it (and only re-ask the server when we are online).
     private func routeByConnectivity() async {
         let online = await isReachableAtLaunch()
+        // A cold-start push tap can commit the web shell to its URL while we
+        // were settling connectivity (the notification delegate fires on its
+        // own clock). If it did, the route is already decided — the launch
+        // router must not paint native/offline/booting over it, which is what
+        // previously stranded the loading screen on a second cold-start push.
+        if pushRouteCommitted { return }
         if session.route == .native, !online {
             GameStore.warmCatalog()
             transition(to: .native)
@@ -169,6 +175,11 @@ final class LaunchModel {
     }
 
     private func enterBooting() {
+        // A committed cold-start push route owns the screen for this launch.
+        // Re-entering the boot phase here would strand the loading screen,
+        // because `applyDestination` then refuses to repaint the pinned route
+        // (`guard !pushRouteCommitted`). Bail out and keep the web shell.
+        guard !pushRouteCommitted else { return }
         transition(to: .booting)
         startHeartbeat()
         Task { await runPipeline() }

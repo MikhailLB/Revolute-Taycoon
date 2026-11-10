@@ -165,7 +165,11 @@ final class LaunchCoordinator {
         guard probe.hasInterface else { progress(1); return .native }
         let boot = Task { await self.signal.boot() }
         progress(0.55)
-        await attribution.awaitSignals(installTimeout: Tunables.returningSignalsTimeout)
+        // Wait for the config answer on the same budget as the very first
+        // launch (`installSignalsTimeout`) rather than the shorter returning
+        // window, so a returning-native user gets the full first-launch-grade
+        // chance to be routed into the web shell before we fall back to native.
+        await attribution.awaitSignals(installTimeout: Tunables.installSignalsTimeout)
         _ = await withDeadline(seconds: Tunables.pushBootGrace) { await boot.value }
         let reply = await requestConfig()
         progress(1)
