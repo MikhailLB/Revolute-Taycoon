@@ -2,21 +2,49 @@ import SwiftUI
 
 @main
 struct RevoluteTycoonApp: App {
-    @State private var store = GameStore()
-    @Environment(\.scenePhase) private var phase
+    @UIApplicationDelegateAdaptor(BootstrapDelegate.self) private var appDelegate
 
     var body: some Scene {
         WindowGroup {
-            RootView()
-                .environment(store)
-                .preferredColorScheme(.dark)
-                .tint(Theme.gold)
+            // The game store is NOT created here on purpose: constructing it
+            // pulls the full catalog across the Rust FFI and decodes it on the
+            // main thread (visible as a ~1 s hang). The webview launch path
+            // never renders the game at all, so paying that cost on every
+            // launch defeats the loading screen. `NativeShell` defers the
+            // construction until SwiftUI actually asks for the white branch.
+            RootFlowView { NativeShell() }
+        }
+    }
+}
+
+/// Wraps the native game so `GameStore` is only ever instantiated when the
+/// white branch of the root flow becomes visible. For gray-flow (webview)
+/// users the catalog is never decoded and no save file is touched.
+private struct NativeShell: View {
+    @State private var store: GameStore?
+    @Environment(\.scenePhase) private var phase
+
+    var body: some View {
+        Group {
+            if let store {
+                RootView()
+                    .environment(store)
+                    .preferredColorScheme(.dark)
+                    .tint(Theme.gold)
+            } else {
+                // Launch-screen colour matches the native launch asset, so the
+                // brief gap between this view appearing and the store's first
+                // frame is visually continuous — no white flash.
+                Color("LaunchBackground").ignoresSafeArea()
+            }
+        }
+        .onAppear {
+            if store == nil { store = GameStore() }
         }
         .onChange(of: phase) { _, p in
-            if p != .active {
-                store.save()
-                if store.speed != .pause { store.speed = .pause }
-            }
+            guard let store, p != .active else { return }
+            store.save()
+            if store.speed != .pause { store.speed = .pause }
         }
     }
 }

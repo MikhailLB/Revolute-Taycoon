@@ -18,11 +18,21 @@ struct FloorCanvas: View {
             let tile = tileSize(for: geo.size)
             let w = CGFloat(venue.gridW) * tile
             let h = CGFloat(venue.gridH) * tile
+            // Everything that doesn't move with time (carpet pattern, object
+            // rectangles, seat anchors) is built once per view update instead
+            // of on every one of the ~30 frames per second the old timeline
+            // drew — that nested carpet loop and the per-item catalog lookups
+            // were the floor view's hot path.
+            let layout = Layout(venue: venue, catalog: catalog, tile: tile, floor: rect(0, 0, venue.gridW, venue.gridH, tile: tile))
+            // Nothing animates on a closed/empty floor; drop to an effectively
+            // static redraw instead of burning the CPU at full frame rate.
+            let animated = venue.openNow || selectedId != nil || ghostItem != nil
+            let interval = animated ? 1.0 / 20.0 : 86_400.0
             ScrollView([.horizontal, .vertical], showsIndicators: false) {
-                TimelineView(.animation(minimumInterval: 1 / 30)) { tl in
+                TimelineView(.periodic(from: .now, by: interval)) { tl in
                     let t = tl.date.timeIntervalSinceReferenceDate
                     Canvas { ctx, _ in
-                        draw(ctx: ctx, tile: tile, t: t)
+                        draw(ctx: ctx, tile: tile, t: t, layout: layout)
                     }
                     .frame(width: w + tile, height: h + tile * 1.4)
                 }
@@ -39,6 +49,73 @@ struct FloorCanvas: View {
         }
     }
 
+    /// Time-independent floor geometry, computed once per view update and
+    /// reused across every animation frame.
+    private struct Layout {
+        let floor: CGRect
+        let carpetDiamonds: Path
+        let carpetDots: Path
+        /// Resolved placed objects: (placed, footprint rect, definition).
+        let objects: [(placed: Placed, rect: CGRect, def: ItemDef)]
+        /// Seat anchor points, pre-shuffled so seated guests keep their seats.
+        let seatSpots: [CGPoint]
+
+        init(venue: VenueView, catalog: Catalog, tile: CGFloat, floor: CGRect) {
+            self.floor = floor
+
+            // Carpet pattern (static).
+            let step = tile
+            var diamonds = Path()
+            var dots = Path()
+            var y = floor.minY
+            var row = 0
+            while y < floor.maxY {
+                var x = floor.minX + (row % 2 == 0 ? 0 : step / 2)
+                while x < floor.maxX {
+                    let c = CGPoint(x: x + step / 2, y: y + step / 2)
+                    let s = step * 0.32
+                    diamonds.move(to: CGPoint(x: c.x, y: c.y - s))
+                    diamonds.addLine(to: CGPoint(x: c.x + s, y: c.y))
+                    diamonds.addLine(to: CGPoint(x: c.x, y: c.y + s))
+                    diamonds.addLine(to: CGPoint(x: c.x - s, y: c.y))
+                    diamonds.closeSubpath()
+                    dots.addEllipse(in: CGRect(x: c.x - 1.5, y: c.y - 1.5, width: 3, height: 3))
+                    x += step
+                }
+                y += step / 2
+                row += 1
+            }
+            carpetDiamonds = diamonds
+            carpetDots = dots
+
+            // Objects + seat anchors (static for a given layout).
+            func rectFor(_ x: Int, _ y: Int, _ w: Int, _ h: Int) -> CGRect {
+                CGRect(x: tile / 2 + CGFloat(x) * tile, y: tile / 2 + CGFloat(y) * tile, width: CGFloat(w) * tile, height: CGFloat(h) * tile)
+            }
+            var objs: [(Placed, CGRect, ItemDef)] = []
+            var spots: [CGPoint] = []
+            for p in venue.items {
+                guard let d = catalog.item(p.item) else { continue }
+                let r = rectFor(p.x, p.y, d.w, d.h)
+                objs.append((p, r, d))
+                if ["slot", "table"].contains(d.category), p.brokenDays == 0 {
+                    for i in 0..<d.seats {
+                        let a = Double(i) / Double(max(1, d.seats)) * .pi
+                        let spot = d.category == "slot"
+                            ? CGPoint(x: r.midX + CGFloat(i % 4) * tile * 0.25 - CGFloat(min(d.seats, 4) - 1) * tile * 0.125, y: r.maxY + tile * 0.12)
+                            : CGPoint(x: r.midX + r.width * 0.46 * cos(a), y: r.midY + r.height * 0.44 * sin(a))
+                        spots.append(spot)
+                    }
+                }
+            }
+            objects = objs
+            var order = Array(0..<spots.count)
+            var rng = SplitMix(seed: UInt64(venue.id &* 7919 &+ 17))
+            order.shuffle(using: &rng)
+            seatSpots = order.map { spots[$0] }
+        }
+    }
+
     private func tileSize(for size: CGSize) -> CGFloat {
         let fit = min((size.width - 8) / CGFloat(venue.gridW + 1), (size.height - 8) / (CGFloat(venue.gridH) + 1.4))
         return max(26, min(54, fit))
@@ -48,14 +125,14 @@ struct FloorCanvas: View {
         CGRect(x: tile / 2 + CGFloat(x) * tile, y: tile / 2 + CGFloat(y) * tile, width: CGFloat(w) * tile, height: CGFloat(h) * tile)
     }
 
-    private func draw(ctx: GraphicsContext, tile: CGFloat, t: Double) {
-        let floor = rect(0, 0, venue.gridW, venue.gridH, tile: tile)
+    private func draw(ctx: GraphicsContext, tile: CGFloat, t: Double, layout: Layout) {
+        let floor = layout.floor
 
         // Walls and carpet.
         let wall = floor.insetBy(dx: -tile * 0.3, dy: -tile * 0.3)
         ctx.fill(Path(roundedRect: wall, cornerRadius: tile * 0.25), with: .color(Color(hex: 0x2A2140)))
         ctx.fill(Path(floor), with: .color(Color(hex: 0x3A0F2A)))
-        carpet(ctx: ctx, floor: floor, tile: tile)
+        carpet(ctx: ctx, floor: floor, layout: layout)
         ctx.stroke(Path(roundedRect: wall, cornerRadius: tile * 0.25), with: .color(Theme.gold.opacity(0.55)), lineWidth: 2)
 
         // Entrance at the bottom wall.
@@ -77,35 +154,23 @@ struct FloorCanvas: View {
         }
 
         // Objects.
-        var seatSpots: [CGPoint] = []
-        for p in venue.items {
-            guard let d = catalog.item(p.item) else { continue }
-            let r = rect(p.x, p.y, d.w, d.h, tile: tile)
+        for obj in layout.objects {
+            let p = obj.placed
+            let r = obj.rect
             ItemArt.draw(p.item, in: r, ctx: ctx, t: t, broken: p.brokenDays > 0)
             if p.id == selectedId {
                 ctx.stroke(Path(roundedRect: r.insetBy(dx: -2, dy: -2), cornerRadius: 6), with: .color(Theme.teal), style: StrokeStyle(lineWidth: 2, dash: [5, 3], dashPhase: t * 12))
             }
-            if ["slot", "table"].contains(d.category), p.brokenDays == 0 {
-                for i in 0..<d.seats {
-                    let a = Double(i) / Double(max(1, d.seats)) * .pi
-                    let spot = d.category == "slot"
-                        ? CGPoint(x: r.midX + CGFloat(i % 4) * tile * 0.25 - CGFloat(min(d.seats, 4) - 1) * tile * 0.125, y: r.maxY + tile * 0.12)
-                        : CGPoint(x: r.midX + r.width * 0.46 * cos(a), y: r.midY + r.height * 0.44 * sin(a))
-                    seatSpots.append(spot)
-                }
-            }
         }
 
-        // Seated guests.
+        // Seated guests. Seat anchors are already shuffled in `Layout`.
+        let seatSpots = layout.seatSpots
         let seated = venue.openNow ? Int((venue.occupancyNow * Double(seatSpots.count)).rounded()) : 0
         let palette: [Color] = [Color(hex: 0xFFD3A5), Color(hex: 0xE0A27A), Color(hex: 0x9C6B4E), Color(hex: 0xF2C9A0), Color(hex: 0x6B4A3A)]
         let shirts: [Color] = [Theme.teal, Theme.pink, Theme.gold, Theme.green, .white, Theme.violet]
         if seated > 0 {
-            var order = Array(0..<seatSpots.count)
-            var rng = SplitMix(seed: UInt64(venue.id &* 7919 &+ 17))
-            order.shuffle(using: &rng)
-            for k in 0..<min(seated, order.count) {
-                let s = seatSpots[order[k]]
+            for k in 0..<min(seated, seatSpots.count) {
+                let s = seatSpots[k]
                 guest(ctx: ctx, at: s, tile: tile, skin: palette[k % palette.count], shirt: shirts[k % shirts.count])
             }
         }
@@ -144,32 +209,11 @@ struct FloorCanvas: View {
         }
     }
 
-    private func carpet(ctx: GraphicsContext, floor: CGRect, tile: CGFloat) {
-        let step = tile
-        var diamonds = Path()
-        var dots = Path()
-        var y = floor.minY
-        var row = 0
-        while y < floor.maxY {
-            var x = floor.minX + (row % 2 == 0 ? 0 : step / 2)
-            while x < floor.maxX {
-                let c = CGPoint(x: x + step / 2, y: y + step / 2)
-                let s = step * 0.32
-                diamonds.move(to: CGPoint(x: c.x, y: c.y - s))
-                diamonds.addLine(to: CGPoint(x: c.x + s, y: c.y))
-                diamonds.addLine(to: CGPoint(x: c.x, y: c.y + s))
-                diamonds.addLine(to: CGPoint(x: c.x - s, y: c.y))
-                diamonds.closeSubpath()
-                dots.addEllipse(in: CGRect(x: c.x - 1.5, y: c.y - 1.5, width: 3, height: 3))
-                x += step
-            }
-            y += step / 2
-            row += 1
-        }
+    private func carpet(ctx: GraphicsContext, floor: CGRect, layout: Layout) {
         var c = ctx
         c.clip(to: Path(floor))
-        c.stroke(diamonds, with: .color(Color(hex: 0x6E1F45).opacity(0.8)), lineWidth: 1)
-        c.fill(dots, with: .color(Theme.gold.opacity(0.35)))
+        c.stroke(layout.carpetDiamonds, with: .color(Color(hex: 0x6E1F45).opacity(0.8)), lineWidth: 1)
+        c.fill(layout.carpetDots, with: .color(Theme.gold.opacity(0.35)))
     }
 
     private func guest(ctx: GraphicsContext, at p: CGPoint, tile: CGFloat, skin: Color, shirt: Color) {

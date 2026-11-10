@@ -7,7 +7,11 @@ resolver = "2"
 members = ["engine"]
 
 [profile.release]
-opt-level = "z"
+# The engine runs the whole simulation and serializes a fresh snapshot several
+# times per second, and decodes the catalog on game entry — this is a compute
+# path, not dead weight, so optimize it for speed. (`opt-level = "z"` here made
+# both the per-tick step and the catalog build measurably slower.)
+opt-level = 3
 lto = true
 codegen-units = 1
 panic = "abort"

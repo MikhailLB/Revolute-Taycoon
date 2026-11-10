@@ -8,59 +8,151 @@
 
 /* Begin PBXBuildFile section */
 		081EF6C89F2B0CF8D5745F8E /* FloorTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72E6817C3218F40E5B0273C /* FloorTab.swift */; };
+		16400B0F8E287299C006AB95 /* WebHostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF83812AEE942E92F20A79F2 /* WebHostView.swift */; };
+		1ED2329FF78225C5A012DCB3 /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 36468E1EE406BDBD9939B3C1 /* AppsFlyerLib */; };
+		23024A0A6C1E15E11D70C2CA /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = DE48E0DDA3DF5B30DCB29DEC /* FirebaseMessaging */; };
 		29F0673EB96236E6C1BB168A /* RustEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFB69740F3533F8D40C68D0 /* RustEngine.swift */; };
+		2F464AE13B57C88F08D90434 /* AsyncSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA1DA6B9D0E892331042AE5 /* AsyncSupport.swift */; };
+		3234586489DCFA806D719E34 /* OfflineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DFE9D6F2B3FAA9F5FBD5A5 /* OfflineView.swift */; };
 		383563C043DFB8C1BA00ABB4 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2544E974BADD0FCFC34989A /* GameView.swift */; };
 		3D13A62A2676F6861E483F47 /* StaffTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB55936976FC135B251ED85 /* StaffTab.swift */; };
+		41E2D6BE4972739906BC696B /* LaunchModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA28A327599E28E1D5BD260 /* LaunchModels.swift */; };
 		482FF499BE7CE648E9FB71E2 /* FinanceTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0354E62B947718E4C2B2C40F /* FinanceTab.swift */; };
+		5A8A260563B28E25965F47B1 /* RevoluteNotifyService.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E9207508C0F169DA9F9DD614 /* RevoluteNotifyService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5AA75B68E7C3FBD521D5BA63 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE89B5829176C58028ABD1CC /* NetworkClient.swift */; };
 		6499585F8A50F3377A90DCF3 /* EmpireTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9323FE04831F459A1A8DC5A /* EmpireTab.swift */; };
+		64A373ADB05D353DA3FE5007 /* AttributionTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E212FAF8020964254CC57B91 /* AttributionTracker.swift */; };
 		6C7B0611F709F3E6BF9C906B /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = CF3D507B57D0B1435F523A4B /* PrivacyInfo.xcprivacy */; };
 		78F86BDE83040D5074FAB3CB /* DevelopTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED2B266269ADBF68DDC3592 /* DevelopTab.swift */; };
 		79327AD257FD4D56E44BC42E /* GameStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81521EBAED44973A1424DBC3 /* GameStore.swift */; };
+		7B5CC2C9B377B3E76123340C /* LaunchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032861C97ECA91DBA6CB71F6 /* LaunchCoordinator.swift */; };
+		7F6E5E6AF6F516C96C41A579 /* SessionCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F6956451A149EE58BE8ECA /* SessionCache.swift */; };
+		7FF530CE86CB2C0A05941C66 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0AB4378C0F2FD62E82C730 /* Reachability.swift */; };
+		87CE312FCAB141EAF7442348 /* BootstrapDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A68A450B74135F184B99F99 /* BootstrapDelegate.swift */; };
 		8A2C35C9565BDB07F69B83BB /* RevoluteTycoonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA9BE4019E41CA3886F22DE /* RevoluteTycoonApp.swift */; };
+		9161D5241666869DCD9E5277 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1341CDDD5D89E2E337AFD342 /* GoogleService-Info.plist */; };
 		992EC1F9C5572B2703EB7673 /* OfficeSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0CA2440EDADB1EDF2253DD /* OfficeSheet.swift */; };
+		9A89D7C6C872B216879BE86F /* AvatarPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413F6F8C2BFEDC55BAA434AA /* AvatarPicker.swift */; };
+		A05C3365F4E0A4989C01E9B3 /* PushCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CDC9A6D2172C8DAE554680 /* PushCenter.swift */; };
 		A2B4C5B4F4B30556386A2B02 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19960D86AA50825DCF156BD7 /* Theme.swift */; };
 		ABCF8DE10CE90B06185882AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69D89B79C6F5776306DA16E7 /* Assets.xcassets */; };
 		B7039251EE17226AC3531284 /* FloorCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B8E6EC9F9BD011A0008EC9 /* FloorCanvas.swift */; };
 		B89A9F119D9559EC37007A1B /* ItemArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2E2035800703AAC2A5D0B7 /* ItemArt.swift */; };
+		BBE3653A1FFBD7472813D514 /* PushOptInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6734A64B8F1FFD7C60164A /* PushOptInView.swift */; };
+		BD03DA5652D7F2129A320CCA /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1434A2B062BD831D9ABAE533 /* NotificationService.swift */; };
+		C455FC7E56BE9315A63E91A4 /* LaunchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB473F154A1BB8C6D71AAD8A /* LaunchModel.swift */; };
+		C577E37E5F7802CEDFF2D702 /* RemoteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BEDB4C17CA3098C536A78D /* RemoteStore.swift */; };
+		CE6861CBCE7EEA7F4BA48762 /* ConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B8A5363E526D56BA13750F /* ConfigService.swift */; };
+		CECFBA8739F83EA22DBD67E3 /* RootFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991EC3E4021A62083C974D2A /* RootFlowView.swift */; };
 		CF1ACB6E9579536DAA0E881B /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE22FC3D5560C68A573852C5 /* Models.swift */; };
 		E5A912407016D82A229B3D02 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3156479880CBB98C9AB30D9 /* MenuView.swift */; };
+		ED296DB1AA75000E6C07688B /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = DA94D42D060A1245B06E62A5 /* FirebaseMessaging */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		DD341117324110323DEA30AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1CE8CD39D32E06A665425A01 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0E83692A355FAC057DBC63E2;
+			remoteInfo = RevoluteNotifyService;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AAA8612E9ED54FA99EA527D2 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5A8A260563B28E25965F47B1 /* RevoluteNotifyService.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		032861C97ECA91DBA6CB71F6 /* LaunchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCoordinator.swift; sourceTree = "<group>"; };
 		0354E62B947718E4C2B2C40F /* FinanceTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceTab.swift; sourceTree = "<group>"; };
+		0E6734A64B8F1FFD7C60164A /* PushOptInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushOptInView.swift; sourceTree = "<group>"; };
+		1341CDDD5D89E2E337AFD342 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1434A2B062BD831D9ABAE533 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		19960D86AA50825DCF156BD7 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		1A0CA2440EDADB1EDF2253DD /* OfficeSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeSheet.swift; sourceTree = "<group>"; };
 		3B2E2035800703AAC2A5D0B7 /* ItemArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemArt.swift; sourceTree = "<group>"; };
+		3BA1DA6B9D0E892331042AE5 /* AsyncSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncSupport.swift; sourceTree = "<group>"; };
+		413F6F8C2BFEDC55BAA434AA /* AvatarPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarPicker.swift; sourceTree = "<group>"; };
 		47B8E6EC9F9BD011A0008EC9 /* FloorCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloorCanvas.swift; sourceTree = "<group>"; };
+		53DFE9D6F2B3FAA9F5FBD5A5 /* OfflineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineView.swift; sourceTree = "<group>"; };
+		57B8A5363E526D56BA13750F /* ConfigService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigService.swift; sourceTree = "<group>"; };
+		59CDC9A6D2172C8DAE554680 /* PushCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushCenter.swift; sourceTree = "<group>"; };
+		5E0AB4378C0F2FD62E82C730 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		63BEDB4C17CA3098C536A78D /* RemoteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteStore.swift; sourceTree = "<group>"; };
 		69D89B79C6F5776306DA16E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6B3A62E026D5EDE79ADC4457 /* RevoluteTycoon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RevoluteTycoon.entitlements; sourceTree = "<group>"; };
 		702BE8D63E8135956F158A9A /* RevoluteTycoon.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = RevoluteTycoon.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		729A7CA4E9B6E68C2FB53FDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		81521EBAED44973A1424DBC3 /* GameStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStore.swift; sourceTree = "<group>"; };
+		991EC3E4021A62083C974D2A /* RootFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootFlowView.swift; sourceTree = "<group>"; };
+		9A68A450B74135F184B99F99 /* BootstrapDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BootstrapDelegate.swift; sourceTree = "<group>"; };
+		A0F6956451A149EE58BE8ECA /* SessionCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCache.swift; sourceTree = "<group>"; };
+		AE89B5829176C58028ABD1CC /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		B3156479880CBB98C9AB30D9 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		B6E49ADAEFB46FAB55F5E3F8 /* taycoon_engine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = taycoon_engine.h; sourceTree = "<group>"; };
 		B72E6817C3218F40E5B0273C /* FloorTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloorTab.swift; sourceTree = "<group>"; };
 		B9323FE04831F459A1A8DC5A /* EmpireTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpireTab.swift; sourceTree = "<group>"; };
+		BB473F154A1BB8C6D71AAD8A /* LaunchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchModel.swift; sourceTree = "<group>"; };
+		BF83812AEE942E92F20A79F2 /* WebHostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebHostView.swift; sourceTree = "<group>"; };
+		CCA28A327599E28E1D5BD260 /* LaunchModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchModels.swift; sourceTree = "<group>"; };
 		CF3D507B57D0B1435F523A4B /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		CFA9BE4019E41CA3886F22DE /* RevoluteTycoonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevoluteTycoonApp.swift; sourceTree = "<group>"; };
 		D0EB324B379AB84A43D27F39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DE22FC3D5560C68A573852C5 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		E212FAF8020964254CC57B91 /* AttributionTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributionTracker.swift; sourceTree = "<group>"; };
 		E2544E974BADD0FCFC34989A /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		E9207508C0F169DA9F9DD614 /* RevoluteNotifyService.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = RevoluteNotifyService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47C11F001CE668202D71631 /* RevoluteTycoon-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RevoluteTycoon-Bridging-Header.h"; sourceTree = "<group>"; };
 		FCB55936976FC135B251ED85 /* StaffTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffTab.swift; sourceTree = "<group>"; };
 		FCFB69740F3533F8D40C68D0 /* RustEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RustEngine.swift; sourceTree = "<group>"; };
 		FED2B266269ADBF68DDC3592 /* DevelopTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopTab.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFrameworksBuildPhase section */
+		A5184A32C88F307646722576 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED296DB1AA75000E6C07688B /* FirebaseMessaging in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DFD8E7A6CA2F784205D6704C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23024A0A6C1E15E11D70C2CA /* FirebaseMessaging in Frameworks */,
+				1ED2329FF78225C5A012DCB3 /* AppsFlyerLib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
 /* Begin PBXGroup section */
 		2BA6CE8C3CEC707321AD180C /* RevoluteTycoon */ = {
 			isa = PBXGroup;
 			children = (
 				69D89B79C6F5776306DA16E7 /* Assets.xcassets */,
+				1341CDDD5D89E2E337AFD342 /* GoogleService-Info.plist */,
 				D0EB324B379AB84A43D27F39 /* Info.plist */,
 				CF3D507B57D0B1435F523A4B /* PrivacyInfo.xcprivacy */,
+				6B3A62E026D5EDE79ADC4457 /* RevoluteTycoon.entitlements */,
 				7B2F1AF9444F3D0BB2F38898 /* App */,
 				41C3B7FB5FAFDE02E3C70F9C /* Art */,
 				8878BC21CCADF379BCAEE3DA /* Bridge */,
 				9861B72E9CCD77833085AE63 /* Core */,
+				AE2F2EB2950A076882BC3D07 /* Services */,
 				D53AC99174BDBCA2BCF968AD /* UI */,
 			);
 			path = RevoluteTycoon;
@@ -69,6 +161,7 @@
 		3CD3381BFCDC72B39DAC6AD3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				E9207508C0F169DA9F9DD614 /* RevoluteNotifyService.appex */,
 				702BE8D63E8135956F158A9A /* RevoluteTycoon.app */,
 			);
 			name = Products;
@@ -103,6 +196,7 @@
 		8D1879960E82D00AF66F3A86 = {
 			isa = PBXGroup;
 			children = (
+				C509BCD71923C49251C07FDF /* RevoluteNotifyService */,
 				2BA6CE8C3CEC707321AD180C /* RevoluteTycoon */,
 				3CD3381BFCDC72B39DAC6AD3 /* Products */,
 			);
@@ -118,9 +212,42 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		AE2F2EB2950A076882BC3D07 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				3BA1DA6B9D0E892331042AE5 /* AsyncSupport.swift */,
+				E212FAF8020964254CC57B91 /* AttributionTracker.swift */,
+				9A68A450B74135F184B99F99 /* BootstrapDelegate.swift */,
+				57B8A5363E526D56BA13750F /* ConfigService.swift */,
+				032861C97ECA91DBA6CB71F6 /* LaunchCoordinator.swift */,
+				BB473F154A1BB8C6D71AAD8A /* LaunchModel.swift */,
+				CCA28A327599E28E1D5BD260 /* LaunchModels.swift */,
+				AE89B5829176C58028ABD1CC /* NetworkClient.swift */,
+				53DFE9D6F2B3FAA9F5FBD5A5 /* OfflineView.swift */,
+				59CDC9A6D2172C8DAE554680 /* PushCenter.swift */,
+				0E6734A64B8F1FFD7C60164A /* PushOptInView.swift */,
+				5E0AB4378C0F2FD62E82C730 /* Reachability.swift */,
+				63BEDB4C17CA3098C536A78D /* RemoteStore.swift */,
+				991EC3E4021A62083C974D2A /* RootFlowView.swift */,
+				A0F6956451A149EE58BE8ECA /* SessionCache.swift */,
+				BF83812AEE942E92F20A79F2 /* WebHostView.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		C509BCD71923C49251C07FDF /* RevoluteNotifyService */ = {
+			isa = PBXGroup;
+			children = (
+				729A7CA4E9B6E68C2FB53FDD /* Info.plist */,
+				1434A2B062BD831D9ABAE533 /* NotificationService.swift */,
+			);
+			path = RevoluteNotifyService;
+			sourceTree = "<group>";
+		};
 		D53AC99174BDBCA2BCF968AD /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				413F6F8C2BFEDC55BAA434AA /* AvatarPicker.swift */,
 				FED2B266269ADBF68DDC3592 /* DevelopTab.swift */,
 				B9323FE04831F459A1A8DC5A /* EmpireTab.swift */,
 				0354E62B947718E4C2B2C40F /* FinanceTab.swift */,
@@ -137,6 +264,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0E83692A355FAC057DBC63E2 /* RevoluteNotifyService */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A85DD8F7C7F57738D608B0BD /* Build configuration list for PBXNativeTarget "RevoluteNotifyService" */;
+			buildPhases = (
+				AF57288C1C9C618788328AB8 /* Sources */,
+				A5184A32C88F307646722576 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RevoluteNotifyService;
+			packageProductDependencies = (
+				DA94D42D060A1245B06E62A5 /* FirebaseMessaging */,
+			);
+			productName = RevoluteNotifyService;
+			productReference = E9207508C0F169DA9F9DD614 /* RevoluteNotifyService.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		A9194DAE8065688272E05597 /* RevoluteTycoon */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6C79C9516F7E737757053146 /* Build configuration list for PBXNativeTarget "RevoluteTycoon" */;
@@ -144,13 +290,18 @@
 				5CB3B2190E9E22B1294C8E9E /* Build Rust engine */,
 				1B3D849DA322B92529E91014 /* Sources */,
 				31D423A3804745EA5C1995C5 /* Resources */,
+				DFD8E7A6CA2F784205D6704C /* Frameworks */,
+				AAA8612E9ED54FA99EA527D2 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5540047922D8A7012FC2651A /* PBXTargetDependency */,
 			);
 			name = RevoluteTycoon;
 			packageProductDependencies = (
+				DE48E0DDA3DF5B30DCB29DEC /* FirebaseMessaging */,
+				36468E1EE406BDBD9939B3C1 /* AppsFlyerLib */,
 			);
 			productName = RevoluteTycoon;
 			productReference = 702BE8D63E8135956F158A9A /* RevoluteTycoon.app */;
@@ -165,6 +316,10 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					0E83692A355FAC057DBC63E2 = {
+						DevelopmentTeam = 48UP4UDWV7;
+						ProvisioningStyle = Automatic;
+					};
 					A9194DAE8065688272E05597 = {
 						DevelopmentTeam = 48UP4UDWV7;
 						ProvisioningStyle = Automatic;
@@ -180,12 +335,17 @@
 			);
 			mainGroup = 8D1879960E82D00AF66F3A86;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				57937F80E394953E8E4CF251 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */,
+				DCF89A24F09BBE6E474D730F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3CD3381BFCDC72B39DAC6AD3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				A9194DAE8065688272E05597 /* RevoluteTycoon */,
+				0E83692A355FAC057DBC63E2 /* RevoluteNotifyService */,
 			);
 		};
 /* End PBXProject section */
@@ -196,6 +356,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABCF8DE10CE90B06185882AD /* Assets.xcassets in Resources */,
+				9161D5241666869DCD9E5277 /* GoogleService-Info.plist in Resources */,
 				6C7B0611F709F3E6BF9C906B /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -230,6 +391,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F464AE13B57C88F08D90434 /* AsyncSupport.swift in Sources */,
+				64A373ADB05D353DA3FE5007 /* AttributionTracker.swift in Sources */,
+				9A89D7C6C872B216879BE86F /* AvatarPicker.swift in Sources */,
+				87CE312FCAB141EAF7442348 /* BootstrapDelegate.swift in Sources */,
+				CE6861CBCE7EEA7F4BA48762 /* ConfigService.swift in Sources */,
 				78F86BDE83040D5074FAB3CB /* DevelopTab.swift in Sources */,
 				6499585F8A50F3377A90DCF3 /* EmpireTab.swift in Sources */,
 				482FF499BE7CE648E9FB71E2 /* FinanceTab.swift in Sources */,
@@ -238,17 +404,45 @@
 				79327AD257FD4D56E44BC42E /* GameStore.swift in Sources */,
 				383563C043DFB8C1BA00ABB4 /* GameView.swift in Sources */,
 				B89A9F119D9559EC37007A1B /* ItemArt.swift in Sources */,
+				7B5CC2C9B377B3E76123340C /* LaunchCoordinator.swift in Sources */,
+				C455FC7E56BE9315A63E91A4 /* LaunchModel.swift in Sources */,
+				41E2D6BE4972739906BC696B /* LaunchModels.swift in Sources */,
 				E5A912407016D82A229B3D02 /* MenuView.swift in Sources */,
 				CF1ACB6E9579536DAA0E881B /* Models.swift in Sources */,
+				5AA75B68E7C3FBD521D5BA63 /* NetworkClient.swift in Sources */,
 				992EC1F9C5572B2703EB7673 /* OfficeSheet.swift in Sources */,
+				3234586489DCFA806D719E34 /* OfflineView.swift in Sources */,
+				A05C3365F4E0A4989C01E9B3 /* PushCenter.swift in Sources */,
+				BBE3653A1FFBD7472813D514 /* PushOptInView.swift in Sources */,
+				7FF530CE86CB2C0A05941C66 /* Reachability.swift in Sources */,
+				C577E37E5F7802CEDFF2D702 /* RemoteStore.swift in Sources */,
 				8A2C35C9565BDB07F69B83BB /* RevoluteTycoonApp.swift in Sources */,
+				CECFBA8739F83EA22DBD67E3 /* RootFlowView.swift in Sources */,
 				29F0673EB96236E6C1BB168A /* RustEngine.swift in Sources */,
+				7F6E5E6AF6F516C96C41A579 /* SessionCache.swift in Sources */,
 				3D13A62A2676F6861E483F47 /* StaffTab.swift in Sources */,
 				A2B4C5B4F4B30556386A2B02 /* Theme.swift in Sources */,
+				16400B0F8E287299C006AB95 /* WebHostView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF57288C1C9C618788328AB8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD03DA5652D7F2129A320CCA /* NotificationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5540047922D8A7012FC2651A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0E83692A355FAC057DBC63E2 /* RevoluteNotifyService */;
+			targetProxy = DD341117324110323DEA30AE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		25E44FCA0E4504C8010C4177 /* Release */ = {
@@ -256,6 +450,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RevoluteTycoon/RevoluteTycoon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEAD_CODE_STRIPPING = YES;
@@ -279,6 +474,27 @@
 				STRIP_STYLE = all;
 				SWIFT_OBJC_BRIDGING_HEADER = "RevoluteTycoon/Bridge/RevoluteTycoon-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2880E2E0905DD6EC0A3685B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 48UP4UDWV7;
+				ENABLE_BITCODE = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = RevoluteNotifyService/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.taycoon.revolute.NotificationService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -317,7 +533,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -330,7 +546,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.1.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -342,11 +558,33 @@
 			};
 			name = Release;
 		};
+		CA5594F3A539EAA57E24610F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 48UP4UDWV7;
+				ENABLE_BITCODE = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = RevoluteNotifyService/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.taycoon.revolute.NotificationService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
 		E3AB2C005C296443A173C14A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RevoluteTycoon/RevoluteTycoon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEAD_CODE_STRIPPING = YES;
@@ -403,7 +641,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -422,7 +660,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.1.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -456,7 +694,53 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
+		A85DD8F7C7F57738D608B0BD /* Build configuration list for PBXNativeTarget "RevoluteNotifyService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA5594F3A539EAA57E24610F /* Debug */,
+				2880E2E0905DD6EC0A3685B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		57937F80E394953E8E4CF251 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppsFlyerSDK/AppsFlyerFramework";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.17.0;
+			};
+		};
+		DCF89A24F09BBE6E474D730F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		36468E1EE406BDBD9939B3C1 /* AppsFlyerLib */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57937F80E394953E8E4CF251 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */;
+			productName = AppsFlyerLib;
+		};
+		DA94D42D060A1245B06E62A5 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DCF89A24F09BBE6E474D730F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		DE48E0DDA3DF5B30DCB29DEC /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DCF89A24F09BBE6E474D730F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1CE8CD39D32E06A665425A01 /* Project object */;
 }

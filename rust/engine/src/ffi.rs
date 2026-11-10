@@ -118,6 +118,30 @@ pub unsafe extern "C" fn rt_bytes_free(ptr: *mut u8, len: usize) {
     }
 }
 
+/// Resolves a secret config by id into a freshly decoded UTF-8 string
+/// (owned by Rust; release with `rt_string_free`). Unknown ids yield "".
+/// The keystream is produced inside the embedded VM so no decoder logic ships
+/// as native code; Swift never holds any of these constants in the clear.
+#[unsafe(no_mangle)]
+pub extern "C" fn rt_cfg_resolve(id: u32) -> *mut c_char {
+    to_c(crate::vault::resolve(id))
+}
+
+/// True once the config endpoint, AppsFlyer dev key and Firebase sender id are
+/// all present. While false the app ships native-only.
+#[unsafe(no_mangle)]
+pub extern "C" fn rt_cfg_ready() -> bool {
+    crate::vault::ready()
+}
+
+/// Resolves a vault entry as a 64-bit unsigned integer. 0 on failure.
+/// Keeps numeric tunables (snooze seconds, poll counts) off the Swift side
+/// as plaintext constants so the binary never ships them in the clear.
+#[unsafe(no_mangle)]
+pub extern "C" fn rt_cfg_number(id: u32) -> u64 {
+    crate::vault::resolve_number(id)
+}
+
 #[unsafe(no_mangle)]
 pub extern "C" fn rt_catalog() -> *mut c_char {
     match serde_json::to_string(&catalog::catalog()) {

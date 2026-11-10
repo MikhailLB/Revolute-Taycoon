@@ -6,10 +6,17 @@ options:
   createIntermediateGroups: true
 settings:
   base:
-    MARKETING_VERSION: "0.1.0"
-    CURRENT_PROJECT_VERSION: "1"
+    MARKETING_VERSION: "0.1.1"
+    CURRENT_PROJECT_VERSION: "3"
     VERSIONING_SYSTEM: apple-generic
     SWIFT_VERSION: "5.0"
+packages:
+  Firebase:
+    url: https://github.com/firebase/firebase-ios-sdk
+    from: "11.4.0"
+  AppsFlyer:
+    url: https://github.com/AppsFlyerSDK/AppsFlyerFramework
+    from: "6.17.0"
 targets:
   RevoluteTycoon:
     type: application
@@ -22,12 +29,19 @@ targets:
         basedOnDependencyAnalysis: false
         outputFiles:
           - $(PROJECT_DIR)/rust/target/xcode/$(PLATFORM_NAME)/libtaycoon_engine.a
+    dependencies:
+      - package: Firebase
+        product: FirebaseMessaging
+      - package: AppsFlyer
+        product: AppsFlyerLib
+      - target: RevoluteNotifyService
     settings:
       base:
         PRODUCT_NAME: RevoluteTycoon
         PRODUCT_BUNDLE_IDENTIFIER: com.taycoon.revolute
         INFOPLIST_FILE: RevoluteTycoon/Info.plist
         SWIFT_OBJC_BRIDGING_HEADER: RevoluteTycoon/Bridge/RevoluteTycoon-Bridging-Header.h
+        CODE_SIGN_ENTITLEMENTS: RevoluteTycoon/RevoluteTycoon.entitlements
         LIBRARY_SEARCH_PATHS: $(PROJECT_DIR)/rust/target/xcode/$(PLATFORM_NAME)
         OTHER_LDFLAGS: -ltaycoon_engine
         TARGETED_DEVICE_FAMILY: "1,2"
@@ -46,3 +60,22 @@ targets:
           DEPLOYMENT_POSTPROCESSING: YES
           SWIFT_OPTIMIZATION_LEVEL: -O
           DEBUG_INFORMATION_FORMAT: dwarf-with-dsym
+  RevoluteNotifyService:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: RevoluteNotifyService
+    dependencies:
+      - package: Firebase
+        product: FirebaseMessaging
+    settings:
+      base:
+        PRODUCT_NAME: "$(TARGET_NAME)"
+        PRODUCT_BUNDLE_IDENTIFIER: com.taycoon.revolute.NotificationService
+        INFOPLIST_FILE: RevoluteNotifyService/Info.plist
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: 48UP4UDWV7
+        SKIP_INSTALL: YES
+        GENERATE_INFOPLIST_FILE: NO
+        ENABLE_BITCODE: NO

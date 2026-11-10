@@ -35,6 +35,41 @@ struct Toast: Identifiable, Equatable {
     let ok: Bool
 }
 
+/// Decoded-once store for the static game catalog.
+///
+/// Decoding pulls the whole table across the Rust FFI and runs `JSONDecoder`
+/// over it, which showed up as a ~1 s main-thread hang on the first game
+/// launch. The catalog never changes at runtime, so we decode it exactly once
+/// and hand the same value to every `GameStore` (new game, continue, recover
+/// after tamper). Lives outside the `@MainActor` game store so `warm()` can
+/// pay the cost on a background thread before the player ever opens the game.
+enum CatalogStore {
+    private static let lock = NSLock()
+    nonisolated(unsafe) private static var cached: Catalog?
+
+    static func shared() -> Catalog {
+        lock.lock()
+        defer { lock.unlock() }
+        if let cached { return cached }
+        let decoded = decode()
+        cached = decoded
+        return decoded
+    }
+
+    static func warm() {
+        DispatchQueue.global(qos: .userInitiated).async { _ = shared() }
+    }
+
+    private static func decode() -> Catalog {
+        let d = JSONDecoder()
+        d.keyDecodingStrategy = .convertFromSnakeCase
+        if let data = RustEngine.catalogData(), let c = try? d.decode(Catalog.self, from: data) {
+            return c
+        }
+        return Catalog(items: [], formats: [], licenses: [], cities: [], roles: [], research: [], loans: [])
+    }
+}
+
 @MainActor
 @Observable
 final class GameStore {
@@ -65,14 +100,11 @@ final class GameStore {
     }
 
     init() {
-        let d = JSONDecoder()
-        d.keyDecodingStrategy = .convertFromSnakeCase
-        if let data = RustEngine.catalogData(), let c = try? d.decode(Catalog.self, from: data) {
-            catalog = c
-        } else {
-            catalog = Catalog(items: [], formats: [], licenses: [], cities: [], roles: [], research: [], loans: [])
-        }
+        catalog = CatalogStore.shared()
     }
+
+    /// Fire-and-forget warm-up so the first `GameStore()` reads a ready cache.
+    static func warmCatalog() { CatalogStore.warm() }
 
     var isRunning: Bool { engine != nil }
 

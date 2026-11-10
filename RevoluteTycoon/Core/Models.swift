@@ -12,11 +12,57 @@ struct Catalog: Decodable {
     let research: [ResearchDef]
     let loans: [LoanOffer]
 
-    func item(_ id: String) -> ItemDef? { items.first { $0.id == id } }
-    func city(_ id: String) -> CityDef? { cities.first { $0.id == id } }
-    func role(_ id: String) -> RoleDef? { roles.first { $0.id == id } }
-    func research(_ id: String) -> ResearchDef? { research.first { $0.id == id } }
-    func loan(_ id: String) -> LoanOffer? { loans.first { $0.id == id } }
+    // O(1) indexes built once after decode. The floor renderer, placement
+    // overlap checks and the build palette all look items up by id many times
+    // per frame, so the previous linear `first { $0.id == id }` scans showed up
+    // as a hot path while the game ran. These maps keep the public API intact.
+    private let itemIndex: [String: ItemDef]
+    private let cityIndex: [String: CityDef]
+    private let roleIndex: [String: RoleDef]
+    private let researchIndex: [String: ResearchDef]
+    private let loanIndex: [String: LoanOffer]
+
+    enum CodingKeys: String, CodingKey {
+        case items, formats, licenses, cities, roles, research, loans
+    }
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        items = try c.decode([ItemDef].self, forKey: .items)
+        formats = try c.decode([FormatDef].self, forKey: .formats)
+        licenses = try c.decode([LicenseDef].self, forKey: .licenses)
+        cities = try c.decode([CityDef].self, forKey: .cities)
+        roles = try c.decode([RoleDef].self, forKey: .roles)
+        research = try c.decode([ResearchDef].self, forKey: .research)
+        loans = try c.decode([LoanOffer].self, forKey: .loans)
+        itemIndex = Dictionary(items.map { ($0.id, $0) }, uniquingKeysWith: { a, _ in a })
+        cityIndex = Dictionary(cities.map { ($0.id, $0) }, uniquingKeysWith: { a, _ in a })
+        roleIndex = Dictionary(roles.map { ($0.id, $0) }, uniquingKeysWith: { a, _ in a })
+        researchIndex = Dictionary(research.map { ($0.id, $0) }, uniquingKeysWith: { a, _ in a })
+        loanIndex = Dictionary(loans.map { ($0.id, $0) }, uniquingKeysWith: { a, _ in a })
+    }
+
+    init(items: [ItemDef], formats: [FormatDef], licenses: [LicenseDef],
+         cities: [CityDef], roles: [RoleDef], research: [ResearchDef], loans: [LoanOffer]) {
+        self.items = items
+        self.formats = formats
+        self.licenses = licenses
+        self.cities = cities
+        self.roles = roles
+        self.research = research
+        self.loans = loans
+        itemIndex = Dictionary(items.map { ($0.id, $0) }, uniquingKeysWith: { a, _ in a })
+        cityIndex = Dictionary(cities.map { ($0.id, $0) }, uniquingKeysWith: { a, _ in a })
+        roleIndex = Dictionary(roles.map { ($0.id, $0) }, uniquingKeysWith: { a, _ in a })
+        researchIndex = Dictionary(research.map { ($0.id, $0) }, uniquingKeysWith: { a, _ in a })
+        loanIndex = Dictionary(loans.map { ($0.id, $0) }, uniquingKeysWith: { a, _ in a })
+    }
+
+    func item(_ id: String) -> ItemDef? { itemIndex[id] }
+    func city(_ id: String) -> CityDef? { cityIndex[id] }
+    func role(_ id: String) -> RoleDef? { roleIndex[id] }
+    func research(_ id: String) -> ResearchDef? { researchIndex[id] }
+    func loan(_ id: String) -> LoanOffer? { loanIndex[id] }
 }
 
 struct ItemDef: Decodable, Identifiable, Hashable {

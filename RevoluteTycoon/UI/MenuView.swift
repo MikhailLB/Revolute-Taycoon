@@ -30,8 +30,12 @@ struct LogoMark: View {
 
 struct MenuView: View {
     @Environment(GameStore.self) private var store
+    @State private var avatars = AvatarStore.shared
     @State private var confirmNew = false
     @State private var showAbout = false
+    @State private var pickerChoice = false
+    @State private var showCamera = false
+    @State private var showLibrary = false
 
     var body: some View {
         @Bindable var store = store
@@ -39,7 +43,12 @@ struct MenuView: View {
             LinearGradient(colors: [Theme.bgDeep, Color(hex: 0x241047)], startPoint: .top, endPoint: .bottom).ignoresSafeArea()
             VStack(spacing: 22) {
                 Spacer()
-                LogoMark(size: 130)
+                Button { pickerChoice = true } label: {
+                    AvatarBadge(image: avatars.image, diameter: 92)
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel("Set profile photo")
+                LogoMark(size: 118)
                 VStack(spacing: 6) {
                     Text("REVOLUTE")
                         .font(.system(size: 40, weight: .black, design: .rounded))
@@ -100,6 +109,28 @@ struct MenuView: View {
             Text("The save file is damaged or was modified outside the game, so it was rejected.")
         }
         .sheet(isPresented: $showAbout) { AboutView() }
+        .confirmationDialog(
+            "Profile photo",
+            isPresented: $pickerChoice,
+            titleVisibility: .visible
+        ) {
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                Button("Take Photo") { showCamera = true }
+            }
+            Button("Choose from Library") { showLibrary = true }
+            if avatars.image != nil {
+                Button("Remove Photo", role: .destructive) { avatars.clear() }
+            }
+            Button("Cancel", role: .cancel) {}
+        }
+        .sheet(isPresented: $showCamera) {
+            CameraCapture { picked in avatars.update(picked) }
+                .ignoresSafeArea()
+        }
+        .sheet(isPresented: $showLibrary) {
+            LibraryCapture { picked in avatars.update(picked) }
+                .ignoresSafeArea()
+        }
     }
 }
 

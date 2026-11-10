@@ -7,6 +7,7 @@ pub mod events;
 pub mod ffi;
 pub mod finance;
 pub mod goals;
+pub mod vault;
 pub mod model;
 pub mod rng;
 pub mod save;
