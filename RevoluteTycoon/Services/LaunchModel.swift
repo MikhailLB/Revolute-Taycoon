@@ -26,6 +26,11 @@ final class LaunchModel {
 
     private(set) var phase: Phase = .idle
     private(set) var progress: Double = 0
+    /// Upper bound the progress bar may reach right now. Normally 1.0, but held
+    /// at 0.85 while the ATT consent dialog is up — the user can sit on it for a
+    /// while and the heartbeat would otherwise crawl all the way to 100% before
+    /// the real decision even starts.
+    private var progressCap: Double = 1.0
 
     private var session: SessionCache!
     private var probe: Reachability!
@@ -196,6 +201,13 @@ final class LaunchModel {
     }
 
     private func runPipeline() async {
+        // Resolve ATT consent before the budgeted decision so a slow dialog
+        // doesn't eat the config-decision budget (first launch only; a no-op
+        // afterwards). Cap the bar at 0.85 for the duration so it can't fill to
+        // 100% while the user is still on the consent dialog.
+        progressCap = 0.85
+        await coordinator.prepareTracking()
+        progressCap = 1.0
         let destination = await coordinator.decide { [weak self] value in
             Task { @MainActor in self?.bumpProgress(to: value) }
         }
@@ -210,7 +222,7 @@ final class LaunchModel {
     /// Soft upward-only progress update so the bar never visibly rewinds when
     /// milestones arrive out of order or on a retry.
     private func bumpProgress(to value: Double) {
-        let clamped = min(max(value, 0), 1)
+        let clamped = min(max(value, 0), progressCap)
         if clamped > progress { progress = clamped }
     }
 
@@ -258,7 +270,18 @@ final class LaunchModel {
 
     func routeToHosted(url: String, cold: Bool) {
         // A push tap wins over the config decision for the rest of this launch.
-        if cold { pushRouteCommitted = true }
+        if cold {
+            pushRouteCommitted = true
+            // Consume the stored cold-start push route now and pin the web
+            // shell. `LaunchCoordinator.run()` normally does this, but a
+            // committed push short-circuits that path — leaving the URL behind
+            // in storage made the *next* plain relaunch replay the old push
+            // page instead of the config destination (the intermittent
+            // push-replay bug). Clearing it here closes that leak.
+            _ = session.consumeLaunchRoute()
+            _ = session.consumePushUrl()
+            session.saveRoute(.hosted)
+        }
         transition(to: .hosted(url: url, cold: cold))
     }
 

@@ -38,6 +38,15 @@ final class LaunchCoordinator {
 
     var enabled: Bool { runtimeEnabled && RemoteStore.ready }
 
+    /// Resolve the ATT consent prompt (first launch only) *before* the budgeted
+    /// decision runs, so a slow user tapping through the dialog can't eat into
+    /// `decisionBudget` and strand a paid first-launch user on native. No-op on
+    /// every later launch, since the status is no longer `.notDetermined`.
+    func prepareTracking() async {
+        guard enabled else { return }
+        await attribution.requestTrackingIfNeeded()
+    }
+
     /// De-dupes only concurrent calls; the cache is cleared on completion so an
     /// offline Retry re-runs the full pipeline.
     func decide(onProgress: @escaping (Double) -> Void) async -> LaunchTarget {
@@ -96,11 +105,9 @@ final class LaunchCoordinator {
         // enriches the config body, so the decision must never block on it —
         // a stalled FCM fetch previously added seconds to every launch.
         let boot = Task { await self.signal.boot() }
-        // Prompt ATT right away — the config POST below has its own timeout and
-        // a race against `canReachNetwork` only buys us trouble (false negative
-        // when the simulator's neutral probe hosts stall). If we actually have
-        // no route, the POST fails fast and we drop into `.native`.
-        await attribution.requestTrackingIfNeeded()
+        // ATT consent is resolved earlier, outside the decision budget (see
+        // `prepareTracking`), so a slow dialog doesn't push the config answer
+        // past the budget and strand the user on native.
         progress(0.46)
         await attribution.awaitSignals(installTimeout: Tunables.installSignalsTimeout)
         progress(0.72)
